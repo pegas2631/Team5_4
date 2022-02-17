@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+    Обработка снимка
+{% endblock title %}
+
+{% block body %}
+    <h1>Все снимки</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-3">
+        {% if screens|length > 0 %}
+            {% for element in screens %}
+                <div class="col">
+                      <div class="card shadow-sm">
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/data/screens/{{ element.PhotoSrc }}">
+                            <div class="card-body">
+                                  <p class="card-text">
+                                      {{ element.Name }}
+                                  </p>
+                                  <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                              <a type="button" href="/gallery/procScreen/{{ element.ID }}" class="btn btn-sm btn-outline-secondary">Просмотреть</a>
+                                        </div>
+                                        <small class="text-muted">{{  element.Date }}</small>
+                                  </div>
+                            </div>
+                      </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>Снимков еще никто не загрузил</h2>
+        {% endif %}
+    </div>
+
+
+    <nav class="mt-4" style="display: flex; justify-content:center;">
+          <ul class="pagination">
+                <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                </li>
+          </ul>
+    </nav>
+
+{% endblock  %}

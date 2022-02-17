@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    Редактирование снимка
+{% endblock title %}
+
+{% block body %}
+    <h1 class="mb-3">Редактирование снимка</h1>
+    <form method="post" action="/photo/update/{{ screen.ID }}/qwe" enctype=multipart/form-data> <!--Пароль пробит жестко-->
+        <div class="mb-3">
+            <label for="file" class="form-label">Загрузите новый снимок, <b>оставить без изменений = оставьте пустым</b></label>
+            <input name="file" class="form-control" type="file" id="file">
+        </div>
+        <div class="mb-3">
+            <label for="nameFormControlInput" class="form-label">Название снимка</label>
+            <input required name="name" type="text" class="form-control" id="nameFormControlInput" value="{{ screen.Name }}">
+        </div>
+        <div class="mb-3">
+            <label for="dateFormControlInput" class="form-label">Дата съёмки: {{ screen.Date }}, <b>оставить без изменений = оставьте пустым  </b></label>
+            <input name="date" type="date" class="form-control" id="dateFormControlInput" >
+        </div>
+        <div class="mb-3">
+            <label for="latFormControlInput" class="form-label">Широта</label>
+            <input name="lat" type="text" class="form-control" id="latFormControlInput" value="{{ screen.Latitude }}">
+            <label for="longFormControlInput" class="form-label">Долгота</label>
+            <input name="long" type="text" class="form-control" id="longFormControlInput" value="{{ screen.Longitude }}">
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Сохранить</button>
+    </form>
+
+{% endblock  %}

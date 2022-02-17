@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+    Обработка снимка
+{% endblock title %}
+
+{% block body %}
+    <h1 class="mb-3">Обработка снимка</h1>
+    <form method="post" action="/photo" enctype=multipart/form-data>
+        <div class="mb-3">
+            <label for="file" class="form-label">Загрузите, не обработанный, снимок</label>
+            <input name="file" class="form-control" type="file" id="file">
+        </div>
+        <div class="mb-3">
+            <label for="nameFormControlInput" class="form-label">Название снимка</label>
+            <input required name="name" type="text" class="form-control" id="nameFormControlInput" placeholder="Screen1">
+        </div>
+        <div class="mb-3">
+            <label for="dateFormControlInput" class="form-label">Дата съёмки</label>
+            <input name="date" type="date" class="form-control" id="dateFormControlInput" >
+        </div>
+        <div class="mb-3">
+            <label for="latFormControlInput" class="form-label">Широта</label>
+            <input name="lat" type="text" class="form-control" id="latFormControlInput" >
+            <label for="longFormControlInput" class="form-label">Долгота</label>
+            <input name="long" type="text" class="form-control" id="longFormControlInput" >
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Сохранить</button>
+    </form>
+
+{% endblock  %}

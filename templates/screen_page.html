@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+   Снимок {{ screen.Name }}
+{% endblock title %}
+
+{% block body %}
+    <h1 class="mb-3">{{ screen.Name }}</h1>
+    <small class="text-muted">Дата съемки: {{  screen.Date }}</small>
+    <br>
+    <small class="text-muted">Координаты: {{  screen.Latitude }} : {{ screen.Longitude }}</small>
+    <div class="row">
+        <div class="col-3">
+            <img src="/data/screens/{{ screen.PhotoSrc }}" class="img-fluid" style="height:250px; width: 100%" alt="">
+            <br>
+            <p class="h4 text-center">Оригинал</p>
+            <div class="d-flex justify-content-center">
+                <a type="submit" class="btn btn-warning mt-2" href="/photo/update/{{ screen.ID }}/qwe">Редактировать</a> <!-- Пароль пока пробит жестко-->
+            </div>
+        </div>
+        <div class="col-3">
+            <img src="/data/screens/NDVI/{{ screen.NDVISrc }}" class="img-fluid" style="height:250px; width: 100%" alt="">
+            <br>
+            <p class="h4 text-center">NDVI обработка </p>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary mt-2">Обработать</button>
+            </div>
+
+
+        </div>
+        <div class="col-3">
+            <img src="/data/screens/NDTI/{{ screen.NDTISrc }}" class="img-fluid" style="height:250px; width: 100%" alt="">
+            <br>
+            <p class="h4 text-center">NDTI обработка</p>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary mt-2">Обработать</button>
+            </div>
+        </div>
+        <div class="col-3">
+            <img src="/data/screens/IR/{{ screen.IRSrc }}" class="img-fluid" style="height:250px; width: 100%" alt="">
+            <br>
+            <p class="h4 text-center">IR обработка</p>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary mt-2">Обработать</button>
+            </div>
+        </div>
+    </div>
+{% endblock  %}
