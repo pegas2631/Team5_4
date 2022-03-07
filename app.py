@@ -1,7 +1,6 @@
 import os
 import traceback
 
-
 from flask import Flask, render_template, url_for, request, redirect, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -31,6 +30,7 @@ class Screen(db.Model):
     Date = db.Column(db.DateTime, default=datetime.utcnow)
     Latitude = db.Column(db.String(50))
     Longitude = db.Column(db.String(50))
+
     def __repr__(self):
         return '<Screen %r>' % self.id
 
@@ -68,7 +68,7 @@ def photo():
             form_date = datetime.strptime(request.form['date'], '%Y-%m-%d')
             screen = Screen(Name=form_name, Date=form_date, PhotoSrc=filename, Latitude=form_lat, Longitude=form_long)
         else:  # для пустых дат
-            screen = Screen(Name=form_name, PhotoSrc=filename,  Latitude=form_lat, Longitude=form_long)
+            screen = Screen(Name=form_name, PhotoSrc=filename, Latitude=form_lat, Longitude=form_long)
 
         try:
             db.session.add(screen)
@@ -92,7 +92,6 @@ def gallery():
 @app.route('/gallery/procScreen')  # страница ожидания для обработки снимка
 def screen_processing():
     return "Пока не реализовано"
-
 
 
 @app.route('/gallery/procScreen/<int:id>')  # страница снимка
@@ -154,6 +153,7 @@ def user(name, id):
 @app.route('/data/<path:filename>')  # раздача файлов из директории data
 def serve_static(filename):
     return send_from_directory("data/", filename)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
